@@ -1,0 +1,29 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: helloworld-rules
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    external-dns.alpha.kubernetes.io/hostname: helloworld-v1.kubernetes.iivanov.dev,helloworld-v2.kubernetes.iivanov.dev
+spec:
+  rules:
+  - host: helloworld-v1.kubernetes.iivanov.dev
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: helloworld-v1
+            port:
+              number: 80
+  - host: helloworld-v2.kubernetes.iivanov.dev
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: helloworld-v2
+            port:
+              number: 80
