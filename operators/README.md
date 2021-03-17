@@ -1,0 +1,1 @@
+https://access.crunchydata.com/documentation/postgres-operator/latest/quickstart/
